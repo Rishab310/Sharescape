@@ -4,6 +4,7 @@ import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import Dashboard from './components/dashboard/Dashboard';
 import Navbar from './components/layouts/Navbar';
+import CreatePost from './components/post/CreatePost';
 import PostDetail from './components/post/PostDetail';
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/post/:id" component={PostDetail}/>
           <Route exact path="/signin" component={SignIn}/>
           <Route exact path="/signup" component={SignUp}/>
+          <Route exact path="/createpost" component={CreatePost}/>
         </Switch>
       </div>
     </BrowserRouter>
