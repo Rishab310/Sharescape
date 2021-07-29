@@ -24,7 +24,7 @@ class CreatePost extends Component {
           </div>
           <div className="input-field">
             <label htmlFor="content">Post Content</label>
-            <textarea name="content" id="content" cols="30" rows="10" className="materialize-textarea"></textarea>
+            <textarea name="content" id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
           </div>
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0" type="submit">Create</button>
