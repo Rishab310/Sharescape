@@ -16,6 +16,7 @@ class CreatePost extends Component {
     e.preventDefault();
     this.props.createPost(this.state);
     // console.log(this.state);
+    this.props.history.push('/');
   }
   render() {
     const { auth } = this.props;
