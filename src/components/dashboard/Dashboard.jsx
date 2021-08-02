@@ -4,11 +4,17 @@ import PostList from '../post/PostList';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
   render() {
     // console.log(this.props);
-    const { posts } = this.props;
+    const { posts, auth } = this.props;
+    if (!auth.uid) {
+      return (
+        <Redirect to='/signin' />
+      );
+    }
     return (
       <>
         <div className="dashboard container">
@@ -29,7 +35,8 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    posts: state.firestore.ordered.posts
+    posts: state.firestore.ordered.posts,
+    auth: state.firebase.auth
   }
 }
 export default compose(
