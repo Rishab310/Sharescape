@@ -13,14 +13,18 @@ import firebase from 'firebase/app';
 import fbConfig from './config/fbConfig';
 
 const store = createStore(rootReducer,
-  compose(
-    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-    reduxFirestore(firebase,fbConfig)
-  )
+  // compose(
+    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore }))
+    // reduxFirestore(firebase,fbConfig)
+  // )
 );
+const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
+}
 const rrfProps = {
   firebase,
-  config: fbConfig,
+  config: rrfConfig,
   dispatch: store.dispatch,
   createFirestoreInstance
 };
