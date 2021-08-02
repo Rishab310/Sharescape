@@ -1,21 +1,47 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 const PostDetail = (props) => {
   const id = props.match.params.id;
-  return (
-    <div className="container section post-deatails">
-      <div className="card z-depth-0">
-        <div className="card-content">
-          <span className="card-title">Project title - {id} </span>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia vitae excepturi ea dolores minima laudantium esse totam magni rem molestiae.</p>
-        </div>
-        <div className="card-action gret lighten-4 grey-text">
-          <div className="">Posted by Rishab</div>
-          <div>7th July, 2021</div>
+  console.log(props);
+  const { post } = props;
+  if (post) {
+    return (
+      <div className="container section post-deatails">
+        <div className="card z-depth-0">
+          <div className="card-content">
+            <span className="card-title">{post.title} </span>
+            <p>{post.content}</p>
+          </div>
+          <div className="card-action gret lighten-4 grey-text">
+            <div className="">Posted by {post.authorFirstName} {post.authorLastName}</div>
+            <div>7th July, 2021</div>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+  else {
+    return (
+      <div className="container center">
+        <p>Loading project ...</p>
+      </div>
+    )
+  }
 }
-
-export default PostDetail;
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.id;
+  const posts = state.firestore.data.post;
+  const post = posts ? posts[id] : null;
+  return {
+    post: post
+  }
+}
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    { collection: 'post' }
+  ])
+)(PostDetail);
