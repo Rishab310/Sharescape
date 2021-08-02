@@ -13,10 +13,10 @@ class Dashboard extends Component {
       <>
         <div className="dashboard container">
           <div className="row">
-            <div className="col s12 m6">
+            <div className="col s12 m7">
               <PostList posts={posts}/>
             </div>
-            <div className="col s12 m5 offset-m1">
+            <div className="col s12 m4 offset-m1">
               <Notifications />
             </div>
           </div>
@@ -29,12 +29,12 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    posts: state.firestore.ordered.post
+    posts: state.firestore.ordered.posts
   }
 }
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'post' }
+    { collection: 'posts' }
   ])
 )(Dashboard);
