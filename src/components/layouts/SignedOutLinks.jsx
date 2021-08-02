@@ -4,8 +4,8 @@ const SignedOutLinks = () => {
   return (
     // <ul className="right hide-on-med-and-down">
     <ul className="right">
-      <li><NavLink to="/signin">Signup</NavLink></li>
-      <li><NavLink to="/signup">Login</NavLink></li>
+      <li><NavLink to="/signin">Login</NavLink></li>
+      <li><NavLink to="/signup">Sign Up</NavLink></li>
     </ul>
   );
 }
