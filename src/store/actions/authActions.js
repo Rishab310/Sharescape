@@ -21,3 +21,28 @@ export const signOut = () => {
     }).catch((err) => {})
   }
 }
+
+export const signUp = (newUser) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    //make async call to database
+    const firebase = getFirebase();
+    const firestore = getFirestore();
+    firebase.auth().createUserWithEmailAndPassword(
+      newUser.email,
+      newUser.password
+    ).then((res) => {
+      console.log('newuser');
+      console.log(newUser);
+      return firestore.collection('users').doc(res.user.uid).set({
+        firstname: newUser.firstname,
+        lastname: newUser.lastname,
+        email: newUser.email,
+        initials: newUser.firstname[0] + newUser.lastname[0]
+      })
+    }).then(() => {
+      dispatch({type: 'SIGNUP_SUCCESS'})
+    }).catch(err => {
+      dispatch({ type: 'SIGNUP_ERROR', err})
+    })
+  }
+}
