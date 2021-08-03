@@ -6,7 +6,7 @@ const PostList = ({posts}) => {
     <div className="project-list section">
       {posts && posts.map(post => {
         return (
-          <Link to={'/post/'+ post.id}>
+          <Link to={'/posts/'+ post.id}>
             <PostSummary post = {post} key={post.id}/>
           </Link>
         )
