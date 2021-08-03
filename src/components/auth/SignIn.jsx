@@ -26,8 +26,16 @@ class SignIn extends Component {
     }
     return (
       <div className="container">
-        <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darker">Sign In</h5>
+        <form className="white" onSubmit={this.handleSubmit} autoComplete="off">
+          <h5 className="grey-text text-darker" style={{paddingBottom:"10px"}}>Sign In</h5>
+          <div className="input-field" style={{display:"none"}}>
+            <label htmlFor="firstname">First Name</label>
+            <input type="text" id="firstname" onChange={this.handleChange} />
+          </div>
+          <div className="input-field" style={{ display: "none" }}>
+            <label htmlFor="lastname">Last Name</label>
+            <input type="text" id="lastname" onChange={this.handleChange} />
+          </div>
           <div className="input-field">
             <label htmlFor="email">Email</label>
             <input type="email" id="email" onChange={this.handleChange}/>

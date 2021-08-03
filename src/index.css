@@ -1,6 +1,8 @@
 html {
   height: 100%;
+  font-size: 16px;
 }
+
 body {
   margin: 0;
   height: 100%;
@@ -8,16 +10,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: url("./img/bg.jpg") no-repeat;
-  background-size:cover;
+  background-size: cover;
   background-attachment: fixed;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 form {
   padding: 20px;
   margin-top: 60px;
+}
+
+.card-title {
+  font-weight: 400 !important;
 }
