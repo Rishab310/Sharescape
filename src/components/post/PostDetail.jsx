@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 
 const PostDetail = (props) => {
-  const id = props.match.params.id;
+  // const id = props.match.params.id;
   console.log(props);
   const { post ,auth } = props;
   if (!auth.uid) {
