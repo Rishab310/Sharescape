@@ -11,6 +11,12 @@ export const createPost = (post) => {
       authorId: uid,
       createdAt: new Date()
     }).then(() => {
+      firestore.collection('notifications').add({
+        content: 'Added a new post!!',
+        user: `${profile.firstname} ${profile.lastname}`,
+        time: new Date()
+      })
+    }).then(() => {
       dispatch({ type: 'CREATE_POST', post});
     }).catch((err) => {
       dispatch({ type: 'CREATE_POST_ERROR', err });
